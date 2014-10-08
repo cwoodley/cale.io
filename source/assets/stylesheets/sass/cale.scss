@@ -4,12 +4,14 @@
 @import "neat/neat";
 
 // @import "fa/font-awesome";
+@import "fonts";
 @import "utilities";
 @import "variables";
 @import "components";
 
 body {
-
+  background: url('../../images/background.jpg') top center no-repeat;
+  background-size: cover;
 }
 
 a {
@@ -18,5 +20,30 @@ a {
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+#bigtext {
+  width: 400px;
+  font-family: 'league-gothic', sans-serif;
+  margin: 0 auto;
+  background-color: #333;
+
+  position: absolute;
+  top:10%;
+
+
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;  
+  // text-shadow: 1px 1px 0 rgb(223, 227, 229), 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+
+  .biggest {
+  }
+
+  & > span {
+    line-height: 0.95em;
   }
 }

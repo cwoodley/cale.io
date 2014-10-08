@@ -17,7 +17,7 @@ module.exports = function(grunt) {
             port: 9001,
             hostname: "*",
             bases: ['<%= globalConfig.source %>'],
-            livereload: true
+            livereload: 35721
           }
         }
       },
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
           },
           files: {
             // files go here, like so:
-            "source/index.html": "source/templates/_index.html",
+            "<%= globalConfig.source %>/index.html": "<%= globalConfig.source %>/templates/_index.html",
           }
         },
       },
@@ -58,19 +58,20 @@ module.exports = function(grunt) {
         all: {
           files: '<%= globalConfig.source %>/index.html',
           options: {
-            livereload: true,
+            livereload: 35721,
             spawn: false
           }
         },
         bake: {
             files: [ "<%= globalConfig.source %>/includes/**" ],
+            files: [ "<%= globalConfig.source %>/templates/**" ],
             tasks: "bake:build"
         },
         js: {
           files: ['<%= globalConfig.assets %>/javascripts/*.js'],
           tasks: ['concat:js'],
           options: {
-            livereload: true,
+            livereload: 35721,
             spawn: false
           }
         },
@@ -78,7 +79,7 @@ module.exports = function(grunt) {
           files: ['<%=globalConfig.assets %>/stylesheets/sass/*.scss'],
           tasks: ['sass:dev'],
           options: {
-            livereload: true,
+            livereload: 35721,
             spawn: false
           }
         }
@@ -233,10 +234,10 @@ module.exports = function(grunt) {
     ]);
 
     // Default task.
-    grunt.registerTask('default', ['server']);
+    grunt.registerTask('serve', ['server']);
 
     // Build for checking
-    grunt.registerTask('nozip', ['clean','bake:build','sass:dist','concat','uglify','copy','processhtml',]);    
+    grunt.registerTask('default', ['clean','bake:build','sass:dist','copy','processhtml',]);    
 
     // Build for delivery
     grunt.registerTask('build', ['nozip','compress']);   
